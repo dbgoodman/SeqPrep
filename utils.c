@@ -282,7 +282,9 @@ void fill_merged_sequence(SQP sqp, AlnAln *aln, bool trim_overhang){
       j++;
     }else if(isXDNA(c1)){
       // c2 is a gap
-      if (!begin_gaps){
+      // dbg: always keep 5' overhangs
+      //if (!begin_gaps){
+      if (true){
         sqp->merged_seq[j] = c1;
         sqp->merged_qual[j] = gap_p33_qual(q1); //divide score by 2
         //now check to see if we are done:
